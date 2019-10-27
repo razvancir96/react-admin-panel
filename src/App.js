@@ -1,12 +1,27 @@
 import React from 'react';
-import UserItem from './components/UserItem';
+// ATENTIE! Nu uitati sa importati componentele create!
+import UserList from './components/UserList';
 import './App.css';
 
 class App extends React.Component {
   constructor() {
     super();
+    // pentru a putea prelucra informatia userilor, trebuie sa le tinem datele in state
+    // structura adecvata este un vector de obiecte
     this.state = {
       background: 'white',
+      users: [
+        {
+          name: 'Arsene Florin',
+          email: 'arsene.florin@gmail.com',
+          isGoldClient: false
+        },
+        {
+          name: 'Criste Mihai',
+          email: 'criste.mihai@gmail.com',
+          isGoldClient: true
+        }
+      ]
     };
   }
 
@@ -18,11 +33,9 @@ class App extends React.Component {
     return(
       <div className="app" style={{background: this.state.background}}>
         <h1>HELLO WORLD!</h1>
-        <UserItem name="Arsene Florin" email="arsene.florin@gmail.com"/>
-        {/* pasam props-ul isGoldClient lui Criste Mihai */}
-        {/* ATENTIE: numele de atribute(props-uri) dat la instantierea lui UserItem trebuie
-        sa fie in aceleasi cu cele preluate in definitia componentei UserItem */}
-        <UserItem name="Criste Mihai" email="criste.mihai@gmail.com" isGoldClient={true}/>
+        {/* de data asta, avand o lista de useri, ne vom crea comonenta UserList,
+        careia ii vom pasa ca props informatiile din state-ul curent */}
+        <UserList users={this.state.users}/>
         <input type="color" onChange={this.changeColor}/>
       </div>
     );
