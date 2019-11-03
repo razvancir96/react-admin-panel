@@ -31,6 +31,15 @@ class App extends React.Component {
   // metoda componentDidMount
   componentDidMount() {
     console.log('App component finished mounting!');
+    // ATENTIE! De cele mai multe ori, vom primi datele despre userii nostri de la un API. Daca vrem doar
+    // sa afisam niste date primite in pagina, am vrea sa le cerem o singura data: cand montam pagina. Mai
+    // precis, cand terminam de montat pagina, vrem sa si aducem datele de la API(backend)
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        // dupa ce transformam rezultatul request-ului in JSON, putem sa actualizam state-ul cu datele primite
+        this.setState({apiUsers: data});
+      })
   }
 
   // UPDATING: de fiecare data cand o componenta este actualizata (i se schimba state-ul cu un apel de
@@ -61,6 +70,14 @@ class App extends React.Component {
         { this.state.background !== '#000000'
             ? <UserList users={this.state.users}/>
             : null
+        }
+        {/* SUPER MARE ATENTIE! Cand facem request-uri asincrone, nu uitati ca datele se iau la
+        componentDidMount. Insa render se apeleaza inainte, asadar, nu va stii inca cine e apiUsers,
+        si va da eroare ulterior. In acest caz trebuie mai intai sa ne asiguram ca datele au venit,
+        deci folosim un operator ternar. */}
+        { this.state.apiUsers
+            ? <UserList users={this.state.apiUsers}/>
+            :null
         }
         <input type="color" onChange={this.changeColor}/>
       </div>
