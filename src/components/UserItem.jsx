@@ -6,7 +6,7 @@ const UserItem = function(props) {
 
     return (
         <div>
-            <h2>{ name }</h2>
+            <h3>{ name }</h3>
             <p>{ email }</p>
             { isGoldClient
                 ? <h3>Client GOLD</h3>

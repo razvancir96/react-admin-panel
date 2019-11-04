@@ -6,6 +6,7 @@ function UserList(props) {
 
     return (
         <div>
+            <h2>Lista utilizatorilor:</h2>
             {users.map((user, index) => {
                 return <UserItem
                     name={user.name}

@@ -1,0 +1,14 @@
+/* ATENTIE! Nu folositi selectori asa de generali. Acest h2 il afecteaza si pe cel din App.js! */
+h2 {
+    font-style: italic;
+}
+
+/* Dati componentei voastre o clasa cat mai specifica si stilizati elementele din interiorul ei. */
+.user-add-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-add-form input {
+    max-width: 50%;
+}
