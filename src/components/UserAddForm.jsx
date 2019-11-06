@@ -4,8 +4,9 @@ import React from 'react';
 // respectivul fisier va fi vizibil la nivelul intregii aplicatii!!
 import './UserAddForm.css';
 class UserAddForm extends React.Component {
-    constructor() {
-        super();
+    // UserAddForm primeste props ca parametru pentru constructor si ii paseaza ca parametru pentru super.
+    constructor(props) {
+        super(props);
         // Daca utilizatorul ar da submit la formular, fara sa completeze nimic,
         // acestea ar fi valorile trimise.
         this.state = {
@@ -36,8 +37,24 @@ class UserAddForm extends React.Component {
     }
 
     render() {
+        // ATENTIE! Destructuring-ul se face inainte de return! Ne ajuta sa scriem mai putin cand apelam
+        // submitAddForm mai jos!
+        const {name, email, isGoldClient} = this.state;
+
         return (
-            <form className="user-add-form">
+            <form
+                className="user-add-form"
+                // Ce se intampla la submiterea datelor din formular? Trebuie adaugat un nou user in lista
+                // de useri afisata. Unde este instantiata(folosita) componenta care afiseaza userii? In App.js!
+                // Deci trebuie ca UserAddForm sa ii trimita datele lui App, pentru ca App sa isi actualizeze state-ul,
+                // care este ulterior pasat catre componenta UserListItem.
+                // Cum comunica componentele intre ele? De sus in jos. De la parinte la copil. Adica App.js
+                // va trimite o functie catre UserAddForm, iar cand functia va fi executata din UserAddForm, va modifca
+                // state-ul din App.js! Cum? this e cheia! (SFAT: consultati teoria la partea asta)
+                // ALSO: functia submitAddForm va fi apelata doar la submit! (Din nou, teoria e importanta) Si
+                // pentru a folosi evenimentul de submit, trebuie pasat ca parametru!
+                onSubmit={ (event) => this.props.submitAddForm(event, name, email, isGoldClient) }
+            >
                 <h2>Adauga utilizatori:</h2>
                 {/* ATENTIE! In JSX, for este pentru structuri repetitive. Pentru for din HTML
                 se foloseste htmlFor! */}
