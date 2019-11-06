@@ -12,6 +12,10 @@ class App extends React.Component {
       // Pentru acest curs am renuntat la userii predefiniti. Toti userii sunt veniti din API.
       users: []
     };
+
+    // in cazul in care nu folosim arrow functions la declararea functiilor pasate catre alte componente,
+    // ar trebuie sa facem bind in constructor. Ce face bind? Vizitati TEORIA!
+    this.BINDED_submitAddForm = this.BINDED_submitAddForm.bind(this);
   }
 
   componentDidMount() {
@@ -77,11 +81,27 @@ class App extends React.Component {
   }
 
   // ATENTIE! Functia asta nu va merge! De ce? Din cauza ca atunci cand va fi apelata din userAddForm, THIS
-  // va fi chiar UserAddForm, nu App.js! Din nou, topicul asta e mai complex, vizitati teoria!
+  // nu va fi App! Din nou, topicul asta e mai complex, vizitati teoria!
   WRONG_submitAddForm(event, name, email, isGoldClient) {
     event.preventDefault();
     // AICI E BINE! Este doar o alta metoda de a spune functia care este trimisa ca parametru lui setState
     // va returna un obiect.
+    this.setState(prevState => ({
+      users: [
+        ...prevState.users,
+        {
+          id: prevState.users[prevState.users.length - 1].id + 1,
+          name,
+          email,
+          isGoldClient
+        }
+      ]
+    }));
+  }
+
+  // functia aceasta va functiona, pentru ca i-am facut bind in constructor (vezi teorie)
+  BINDED_submitAddForm(event, name, email, isGoldClient) {
+    event.preventDefault();
     this.setState(prevState => ({
       users: [
         ...prevState.users,
@@ -108,6 +128,10 @@ class App extends React.Component {
         {/* Decomentati linia de mai jos si comentati UserAddForm-ul de mai sus pentru a testa functia
         WRONG_submitAddForm */}
         {/* <UserAddForm submitAddForm={ this.WRONG_submitAddForm }/> */}
+
+        {/* Decomentati linia de mai jos si comentati UserAddForm-ul de mai sus pentru a testa functia
+        BINDED_submitAddForm */}
+        {/* <UserAddForm submitAddForm={ this.BINDED_submitAddForm }/> */}
 
         {/* Randam o singura data componenta UserList, careia ii trimitem ca proprietati userii din state.
         Atentie, nu trebuie sa omitem sa verificam daca avem useri in state! */}
