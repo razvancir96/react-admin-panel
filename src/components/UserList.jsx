@@ -9,7 +9,6 @@ function UserList(props) {
             <h2>Lista utilizatorilor:</h2>
             { users.map((user, index) => {
                 return <UserItem
-                    // adaugam prop-ul id componentei UserItem
                     id={ user.id }
                     name={ user.name }
                     email={ user.email }
