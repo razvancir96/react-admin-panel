@@ -35,6 +35,11 @@ class App extends React.Component {
 
   changeColor = (event) => {
     this.setState({background: event.target.value});
+    // Observam ca atunci can schimbam background-ul, state-ul afisat este cel precedent, nu cel nou..
+    // De ce? setState e asincron, deci nu face modificarea imediat!!
+    // Daca vreti sa vedeti cum se modifica state-ul dati console.log-ul in metoda render, pentru ca render
+    // este reapelat de fiecare data cand state-ul se schimba!
+    console.log(this.state.background);
   }
 
   // functia getMaxId calculeaza Id-ul maxim pentru un vector de useri
