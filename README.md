@@ -20,9 +20,9 @@ Pentru a vedea progresiv cum a fost realizat acest proiect urmariti urmatoarele 
 
 Pentru a continua proiectul, avem urmatoarele cerinte:
 
-1. Adaugati pe fiecare user un buton de stergere
+1. Adaugati pe fiecare user un buton de stergere.
 
 2. Faceti putina validare a datelor. Spre exemplu, sa nu poata fi introdus un nume gol, iar emailul sa contina caracterele `@` si `.`.
 
-3. Stilizati aplicatia, astfel incat sa arate mai frumos
+3. Stilizati aplicatia, astfel incat sa arate mai frumos.
 
