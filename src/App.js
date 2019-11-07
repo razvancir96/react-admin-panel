@@ -40,6 +40,9 @@ class App extends React.Component {
     // Daca vreti sa vedeti cum se modifica state-ul dati console.log-ul in metoda render, pentru ca render
     // este reapelat de fiecare data cand state-ul se schimba!
     console.log(this.state.background);
+    // Putem sa ii pasam lui setState un callback ca parametru, dupa pasarea obiectului, pentru a vedea ce se intampla
+    // DUPA actualizarea state-ului! (DECOMENTATI codul de mai jos si comentati setState-ul de mai sus pt a vedea)
+    // this.setState({background: event.target.value}, () => {console.log(this.state.background)});
   }
 
   // functia getMaxId calculeaza Id-ul maxim pentru un vector de useri
