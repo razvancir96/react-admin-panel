@@ -1,6 +1,6 @@
-## JavaScript Advanced - Proiectul 1
+# JavaScript Advanced - Proiectul 1
 
-Pentru a rula proiectul:
+## Rularea proiectului
 
 #### 1. `git clone https://github.com/razvancir96/react-admin-panel.git`
 
@@ -10,6 +10,8 @@ Pentru a rula proiectul:
 
 #### 4. `npm start`
 
+## Cursuri precedente
+
 Pentru a vedea progresiv cum a fost realizat acest proiect urmariti urmatoarele repo-uri. Comentariile/console.log-urile din fiecare fisier sunt specifice cursurului la care au fost facute. Versiunea finala este fara comentarii sau console.log-uri.
 
 #### Cursul 2: https://github.com/razvancir96/react-curs02
@@ -17,6 +19,8 @@ Pentru a vedea progresiv cum a fost realizat acest proiect urmariti urmatoarele 
 #### Cursul 3: https://github.com/razvancir96/react-curs03
 
 #### Cursul 4: https://github.com/razvancir96/react-curs04
+
+## Cerințe de implementat
 
 Pentru a continua proiectul, aveți de implementat cerințele care au fost date de-a lungul cursurilor 2-4:
 
