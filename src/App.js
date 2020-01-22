@@ -24,11 +24,11 @@ class App extends React.Component {
       })
   }
 
-  changeColor = (event) => {
+  changeColor(event) {
     this.setState({background: event.target.value});
   }
 
-  getMaxId = (users) => {
+  getMaxId(users) {
     let maxId = 0;
 
     users.forEach(user => {
@@ -40,7 +40,7 @@ class App extends React.Component {
     return maxId;
   }
 
-  submitAddForm = (event, name, email, isGoldClient) => {
+  submitAddForm(event, name, email, isGoldClient) {
     event.preventDefault();
     this.setState(prevState => {
       return {
@@ -61,12 +61,9 @@ class App extends React.Component {
     return(
       <div className="app" style={{background: this.state.background}}>
         <h1>Admin panel - Proiectul 1</h1>
-        <UserAddForm submitAddForm={ this.submitAddForm }/>
-        { this.state.users
-            ? <UserList users={this.state.users}/>
-            :null
-        }
-        <input type="color" onChange={this.changeColor}/>
+        <UserAddForm submitAddForm={(event, name, email, isGoldClient) => this.submitAddForm(event, name, email, isGoldClient)}/>
+        <UserList users={this.state.users}/>
+        <input type="color" onChange={(event) => this.changeColor(event)}/>
       </div>
     );
   }
