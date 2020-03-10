@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserItem = function(props) {
+function UserItem(props) {
     const {name, email, isGoldClient} = props;
 
     return (
